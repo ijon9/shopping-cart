@@ -2,16 +2,7 @@ import { useState, useEffect, Fragment } from 'react'
 import Nav from './Nav.jsx'
 import Card from './Card.jsx'
 
-function Shop() {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-    .then(response => response.json())
-    .then(data => setItems(data));
-  }, []);
-
+function Shop( { editCart, cart, items } ) {
   // {
   //   "id": 0,
   //   "title": "string",
@@ -20,22 +11,19 @@ function Shop() {
   //   "category": "string",
   //   "image": "http://example.com"
   // }
-  
-  return (
-    items && 
+
+  const cardDiv = {
+    display: "flex",
+    flexWrap: "wrap"
+  }
+
+  return ( 
     <>
-    <Nav />
-     <div>Shop</div>
-     {/* {items.map((item => (
-      <Fragment key={item.id}>
-        {item.id}
-        {item.title} 
-        <br />
-      </Fragment>
-     )))} */}
-     <div id="cardDiv">
+    <Nav cart={cart} />
+     <h1 style={{textAlign: "center"}}>Shop</h1>
+     <div style={cardDiv}>
       {items.map((item) => (
-        <Card item={item}/>
+        <Card key={item.id} item={item}/>
       ))}
      </div>
     </>

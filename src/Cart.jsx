@@ -2,12 +2,12 @@ import { useState } from 'react'
 import Nav from './Nav.jsx'
 // import './Nav.css'
 
-function Cart() {
+function Cart( {items, cart} ) {
 
 
   return (
     <>
-    <Nav />
+    <Nav cart={cart}/>
      <div>Cart</div>
     </>
   )

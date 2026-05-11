@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { Link } from "react-router"
 import './Nav.css'
 
-function Nav() {
-  {/* Props: count */}
+function Nav( { cart } ) {
   const cartStyle = {
     display: "flex",
     gap: "5px"
   }
+
+  // const length = Object.keys(user).length;
 
   return (
     <>
@@ -20,9 +21,9 @@ function Nav() {
         </div>
         <div style={cartStyle}>
           <Link to="/cart"> Cart </Link>
-          <div id="count">
-
-          </div>
+          {Object.keys(cart).length !== 0 
+          ? <div id="count">{Object.keys(cart).length}</div>
+           : <div id="countPlace"></div>}
         </div>
      </div>
     </>
