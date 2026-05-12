@@ -26,7 +26,7 @@ function App( ) {
       },
       {
         path: "/cart",
-        element: <Cart items={items} cart={cart}/>
+        element: <Cart items={items} cart={cart} editCart={setCart}/>
       }
     ])
 

@@ -23,7 +23,7 @@ function Shop( { editCart, cart, items } ) {
      <h1 style={{textAlign: "center"}}>Shop</h1>
      <div style={cardDiv}>
       {items.map((item) => (
-        <Card key={item.id} item={item}/>
+        <Card key={item.id} item={item} editCart={editCart}/>
       ))}
      </div>
     </>

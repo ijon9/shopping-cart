@@ -8,8 +8,11 @@ function Home({ cart }) {
   return (
     <>
       <Nav cart={cart}/>
-     <div>Select Shop to start shopping!</div>
-     <div>Select Cart to checkout!</div>
+      <div style={{color: "purple"}}>
+        <div>Select Shop to start shopping!</div>
+        <div>Select Cart to checkout!</div>
+      </div>
+     
     </>
   )
 }

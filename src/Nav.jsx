@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router"
 import './Nav.css'
 
@@ -8,7 +8,24 @@ function Nav( { cart } ) {
     gap: "5px"
   }
 
+  const [totalItems, setTotalItems] = useState(getTotalItems());
+
+  function getTotalItems() {
+    let ans = 0;
+    for(let key of Object.keys(cart)) {
+      ans += cart[key];
+    }
+    return ans;
+  }
+
+  useEffect(() => {
+    setTotalItems((prev) => {
+      return getTotalItems();
+    })
+  }, [cart])
+
   // const length = Object.keys(user).length;
+  
 
   return (
     <>
@@ -21,8 +38,8 @@ function Nav( { cart } ) {
         </div>
         <div style={cartStyle}>
           <Link to="/cart"> Cart </Link>
-          {Object.keys(cart).length !== 0 
-          ? <div id="count">{Object.keys(cart).length}</div>
+          {totalItems !== 0 
+          ? <div id="count">{totalItems}</div>
            : <div id="countPlace"></div>}
         </div>
      </div>
