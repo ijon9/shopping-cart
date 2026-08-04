@@ -35,11 +35,11 @@ function Card({ item, editCart }) {
   function addToCart() {
     const numDom = document.getElementById("quantity"+item.id);
     const amount = +numDom.value;
+    if(amount <= 0) {
+      alert("Please select an amount greater than 0");
+      return prev;
+    }
     editCart((prev) => {
-      if(amount <= 0) {
-        alert("Please select an amount greater than 0");
-        return prev;
-      }
       const next = {...prev};
       if(item.id in next) next[item.id] += amount;
       else next[item.id] = amount;
